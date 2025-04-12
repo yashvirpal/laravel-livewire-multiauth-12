@@ -6,6 +6,8 @@ npm install => yes
 
 php artisan migrate:fresh
 
+php artisan make:enum Enums/UserRole
+
 
 composer require barryvdh/laravel-debugbar --dev
 composer require laravel/pint --dev
