@@ -16,10 +16,11 @@
         <flux:navlist variant="outline">
             <flux:navlist.group :heading="__('Platform')" class="grid">
                 @if (auth()->user()->role==App\Enums\UserRole::Admin)
-                <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-                <flux:navlist.item icon="building-storefront" :href="route('dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Products') }}</flux:navlist.item>
-                <flux:navlist.item icon="users" :href="route('dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Users') }}</flux:navlist.item>
-                <flux:navlist.item icon="shopping-bag" :href="route('dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Order') }}</flux:navlist.item>
+                <flux:navlist.item icon="home" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
+                <flux:navlist.item icon="building-storefront" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Products') }}</flux:navlist.item>
+                <flux:navlist.item icon="users" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Users') }}</flux:navlist.item>
+                <flux:navlist.item icon="shopping-bag" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Order') }}</flux:navlist.item>
+                <flux:navlist.item icon="book-open" :href="route('admin.dashboard')" :current="request()->routeIs('admin.dashboard')" wire:navigate>{{ __('Blogs') }}</flux:navlist.item>
 
                 @endif
                 @if (auth()->user()->role==App\Enums\UserRole::User)
@@ -73,7 +74,12 @@
                 <flux:menu.separator />
 
                 <flux:menu.radio.group>
+                    @if (auth()->user()->role==App\Enums\UserRole::Admin)
+                    <flux:menu.item :href="route('admin.settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                    @endif
+                    @if (auth()->user()->role==App\Enums\UserRole::User)
                     <flux:menu.item :href="route('settings.profile')" icon="cog" wire:navigate>{{ __('Settings') }}</flux:menu.item>
+                    @endif
                 </flux:menu.radio.group>
 
                 <flux:menu.separator />
