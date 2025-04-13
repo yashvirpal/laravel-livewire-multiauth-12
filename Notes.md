@@ -16,7 +16,11 @@ composer require barryvdh/laravel-debugbar --dev
 composer require laravel/pint --dev
 composer require --dev larastan/larastan
 composer require laravolt/avatar
+composer require php-flasher/flasher-laravel
+    php artisan flasher:install
+    php artisan flasher:install --config
 
+Package yoeunes/toastr is abandoned, you should avoid using it. Use php-flasher/flasher-toastr-laravel instead.
 
 
 
